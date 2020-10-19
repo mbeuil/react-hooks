@@ -166,6 +166,60 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "apolakipso",
+      "name": "Apola Kipso",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/494674?v=4",
+      "profile": "https://twitter.com/apolakipso",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Snaptags",
+      "name": "Markus Lasermann",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/1249745?v=4",
+      "profile": "https://github.com/Snaptags",
+      "contributions": [
+        "test"
+      ]
+    },
+    {
+      "login": "degeens",
+      "name": "Stijn Geens",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/33414262?v=4",
+      "profile": "https://github.com/degeens",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "nativedone",
+      "name": "Adeildo Amorim",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/20998754?v=4",
+      "profile": "https://github.com/nativedone",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "thegoodsheppard",
+      "name": "Greg Sheppard",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/13774377?v=4",
+      "profile": "https://github.com/thegoodsheppard",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "RafaelDavisH",
+      "name": "Rafael D. Hernandez",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/6822714?v=4",
+      "profile": "https://rafaeldavis.dev",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
