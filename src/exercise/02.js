@@ -1,44 +1,43 @@
 // useEffect: persistent state
-// 💯 flexible localStorage hook
-// http://localhost:3000/isolated/final/02.extra-4.js
+// http://localhost:3000/isolated/exercise/02.js
 
-import React from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 
 function useLocalStorageState(
   key,
-  defaultValue = '',
+  defaultValue = null,
   {serialize = JSON.stringify, deserialize = JSON.parse} = {},
 ) {
-  const [state, setState] = React.useState(() => {
+  // option method to serialize deserialize with JSON being the default option
+
+  const [state, setState] = useState(() => {
     const valueInLocalStorage = window.localStorage.getItem(key);
     if (valueInLocalStorage) {
-      // the try/catch is here in case the localStorage value was set before
-      // we had the serialization in place (like we do in previous extra credits)
-      try {
-        return deserialize(valueInLocalStorage);
-      } catch (error) {
-        window.localStorage.removeItem(key);
-      }
-    }
-    return typeof defaultValue === 'function' ? defaultValue() : defaultValue;
+      return deserialize(valueInLocalStorage);
+    } else
+      return (
+        // lazy read of defaultValue
+        typeof defaultValue === 'function' ? defaultValue() : defaultValue
+      );
   });
 
-  const prevKeyRef = React.useRef(key);
+  // keep track of the previous Key and change it if needed
+  const prevKeyRef = useRef(key);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const prevKey = prevKeyRef.current;
     if (prevKey !== key) {
       window.localStorage.removeItem(prevKey);
     }
     prevKeyRef.current = key;
     window.localStorage.setItem(key, serialize(state));
-  }, [key, state, serialize]);
+  }, [key, serialize, state]);
 
   return [state, setState];
 }
 
-function Greeting({initialName = ''}) {
-  const [name, setName] = useLocalStorageState('name', initialName);
+function Greeting() {
+  const [name, setName] = useLocalStorageState('name', '');
 
   function handleChange(event) {
     setName(event.target.value);
@@ -48,7 +47,7 @@ function Greeting({initialName = ''}) {
     <div>
       <form>
         <label htmlFor="name">Name: </label>
-        <input value={name} onChange={handleChange} id="name" />
+        <input onChange={handleChange} id="name" value={name} />
       </form>
       {name ? <strong>Hello {name}</strong> : 'Please type your name'}
     </div>
